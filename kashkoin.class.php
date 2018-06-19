@@ -1,6 +1,6 @@
 <?php
 
-class Karbo {
+class Kashkoin {
 
 	/**
 	 * Host of Simplewallet JSON RPC API
@@ -10,11 +10,11 @@ class Karbo {
 	/**
 	 * Port
 	 */
-	const RPC_PORT = "32348";
+	const RPC_PORT = "30965";
 
 	/**
 	 * Username for authentication
-	 * Keep this field empty, if don't care about security of your KRB :)
+	 * Keep this field empty, if don't care about security of your KHK :)
 	 */
 	const RPC_USER = "USERNAME";
 
@@ -34,14 +34,14 @@ class Karbo {
 	const RPC_TIMER = 50000;
 
 	/**
-	 * Decimal point, needed for KRB amount calculations
-	 * (don't change this value, because it may cause loss of your KRB)
+	 * Decimal point, needed for KHK amount calculations
+	 * (don't change this value, because it may cause loss of your KHK)
 	 */
 	const DECIMAL_POINT = 12;
 
 	/**
 	 * Number of decimal places
-	 * (you may change this value, if price of KRB goes to high one day)
+	 * (you may change this value, if price of KHK goes to high one day)
 	 */
 	const PREC_POINT = 4;
 
@@ -53,14 +53,14 @@ class Karbo {
 
 	/**
 	 * Fee of transaction
-	 * (100000000 == 0.0001 KRB)
+	 * (100000000 == 0.0001 KHK)
 	 */
-	const KRB_FEE = 100000000;
+	const KHK_FEE = 100000000;
 
 	/**
 	 * Transaction mixin
 	 */
-	const KRB_MIXIN = 0;
+	const KHK_MIXIN = 0;
 
 	private $service_host = null;
 	private $service_port = null;
@@ -86,8 +86,8 @@ class Karbo {
 		$this->service_port = self::RPC_PORT;
 		$this->service_user = self::RPC_USER;
 		$this->service_password = self::RPC_PASSWORD;
-		$this->service_mixin = self::KRB_MIXIN;
-		$this->service_fee = self::KRB_FEE;
+		$this->service_mixin = self::KHK_MIXIN;
+		$this->service_fee = self::KHK_FEE;
 
 		if (!empty($rpc_host) && !empty($rpc_port)) {
 			$this->service_host = $rpc_host;
@@ -473,10 +473,10 @@ class Karbo {
 	 * checkAddress()
 	 * Regex check for wallet address
 	 *
-	 * @param string [$address] Addres of Karbo wallet
+	 * @param string [$address] Addres of Kashkoin wallet
 	 */
 	public static function checkAddress($address) {
-		$result = preg_match("/^K[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$/", $address);
+		$result = preg_match("/^jkhk[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$/", $address);
 
 		return $result;
 	}
